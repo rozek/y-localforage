@@ -1,2 +1,3 @@
-# y-localforage
-a simple Yjs storage provider using localForage for persistence
+# y-localforage #
+
+a simple [Yjs](https://docs.yjs.dev/) storage provider using [localForage](https://localforage.github.io/localForage/) for persistence
