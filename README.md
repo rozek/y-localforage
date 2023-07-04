@@ -9,6 +9,10 @@ a simple [Yjs](https://docs.yjs.dev/) storage provider using [localForage](https
 
 
 
+### Constructor ###
+
+* **`LocalForageProvider (Store:any, sharedDoc:Y.Doc, UpdateLimit:number = 500)`**<br>creates a new instance of `LocalForageProvider` which synchronizes the given `sharedDoc` on the given localForage `Store`. `UpdateLimit` indicates how many updates should be appended to the `Store` before they will be compacted into a single one
+
 ### Properties ###
 
 * **`isSynced`**<br>returns `true` while the initially given `Y.Doc` and this provider are in-sync - or `false` otherwise. Please note, that `isSynced` does not inform about the synchronization status of any "subdocs"
