@@ -9,6 +9,61 @@ a simple [Yjs](https://docs.yjs.dev/) storage provider using [localForage](https
 
 
 
+## Installation ##
+
+`y-localforage` may be used as an ECMAScript module (ESM), a CommonJS or AMD module or from a global variable.
+
+You may either install the package into your build environment using [NPM](https://docs.npmjs.com/) with the command
+
+```
+npm install y-localforage
+```
+
+or load the plain script file directly
+
+```html
+<script src="https://unpkg.com/y-localforage"></script>
+```
+
+## Access ##
+
+How to access the package depends on the type of module you prefer
+
+* ESM (or Svelte): `import { LocalForageProvider } from 'y-localforage'`
+* CommonJS: `const LocalForageProvider = require('y-localforage')`
+* AMD: `require(['y-localforage'], (LocalForageProvider) => {...})`
+
+Alternatively, you may access the global variable `LocalForageProvider` directly.
+
+Note for ECMAScript module users: all module functions and values are exported individually, thus allowing your bundler to perform some "tree-shaking" in order to include actually used functions or values (together with their dependencies) only.
+
+## Usage within Svelte ##
+
+For Svelte, it is recommended to import the package in a module context. From then on, its exports may be used as usual:
+
+```html
+<script context="module">
+  import * as Y from 'yjs'
+  import { LocalForageProvider } from 'y-localforage'
+</script>
+
+<script>
+  const sharedDoc   = new Y.Doc()
+  const Persistence = new LocalForageProvider(Store, sharedDoc)
+  ...
+</script>
+```
+
+## Usage as ECMAscript, CommonJS or AMD Module (or as a global Variable) ##
+
+Let's assume that you already "required" or "imported" (or simply loaded) the module according to your local environment. In that case, you may use it as follows:
+
+```javascript
+  ...
+  const Persistence = new LocalForageProvider(Store, sharedDoc)
+  ...
+```
+
 ## API Reference ##
 
 The following documentation shows method signatures as used by TypeScript - if you prefer plain JavaScript, just ignore the type annotations.
