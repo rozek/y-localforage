@@ -14,6 +14,11 @@ a simple [Yjs](https://docs.yjs.dev/) storage provider using [localForage](https
 * **`isSynced`**<br>returns `true` while the initially given `Y.Doc` and this provider are in-sync - or `false` otherwise. Please note, that `isSynced` does not inform about the synchronization status of any "subdocs"
 * **`isFullySynced`**<br>returns `true` while the initially given `Y.Doc` and all its "subdocs" are in-sync - or `false` otherwise
 
+### Methods ###
+
+* **`SubDocIsSynced (SubDoc:Y.Doc):boolean`**<br>returns `true` while the given `SubDoc` (of this provider's shared `Y.Doc`) and its provider are in-sync - or `false` otherwise. `SubDocIsSynced` also returns `false` if `SubDoc` is not a subdoc of this provider's shared `Y.Doc`
+* **`async destroy ():Promise<void>`**<br>stops any activities of this provider and deletes any persistence entries of this provider's shared `Y.Doc` and its subdocs. **Warning**: this method completely destroys any written data and cannot be undone!
+
 ### Events ###
 
 * **`on('sync-started', Handler:(Provider:LocalForageProvider, Progress:number) => void)`**<br>the `sync-started` event is fired whenever a synchronization between this provider and its associated `Y.Doc` has begun. `Provider` contains a reference to this provider and `Progress` is always `0.0`
