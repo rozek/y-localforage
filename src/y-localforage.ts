@@ -56,6 +56,17 @@ namespace LocalForageProvider {
       return (this._pendingUpdates === 0)
     }
 
+  /**** isFullySynced - is true while this._sharedDoc and all subdocs are in-sync ****/
+
+    get isFullySynced ():boolean {
+      return (
+        (this._pendingUpdates === 0) &&
+        Array.from(this._SubDocMap.values()).every(
+          (SubProvider) => SubProvider.isSynced
+        )
+      )
+    }
+
   /**** SubDocIsSynced - is true while the given SubDoc is in-sync ****/
 
     public SubDocIsSynced (SubDoc:Y.Doc):boolean {
