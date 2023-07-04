@@ -9,6 +9,15 @@ a simple [Yjs](https://docs.yjs.dev/) storage provider using [localForage](https
 
 
 
+### Events ###
+
+* **`on('sync-started', Handler:(Provider:LocalForageProvider, Progress:number) => void)`**<br>the `sync-started` event is fired whenever a synchronization between this provider and its associated `Y.Doc` has begun. `Provider` contains a reference to this provider and `Progress` is always `0.0`
+* **`on('sync-continued', Handler:(Provider:LocalForageProvider, Progress:number) => void)`**<br>the `sync-continued` event may be fired several times while a synchronization between this provider and its associated `Y.Doc` is in progress if this synchronization can not be completed instantaneously. `Provider` contains a reference to this provider and `Progress` is a number between `0.0` and `1.0` indicating how much has already been synchronized. Please note: depending on how many new updates are generated (in contrast to how many have been synchronized during that time) the reported `Progress` may not always increase but may even decrease sometimes
+* **`on('sync-finished', Handler:(Provider:LocalForageProvider, Progress:number) => void)`**<br>the `sync-finished` event is fired whenever a synchronization between this provider and its associated `Y.Doc` has finished. `Provider` contains a reference to this provider and `Progress` is always `1.0`
+* **`on('sync-aborted', Handler:(Provider:LocalForageProvider, Progress:number) => void)`**<br>the `sync-aborted` event is fired when a synchronization between this provider and its associated `Y.Doc` has been aborted (e.g., because the space on localStorage was exhausted or the provider was destroyed). `Provider` contains a reference to this provider and `Progress` is always `1.0`. After such an event, the `Provider` remains unusable and has to be created again
+* **`on('synced', Handler:(Provider:LocalForageProvider) => void`**<br>the `synced` event works like in any other Yjs provider and is fired whenever (initially or after an update to the associated `Y.Doc`) this provider gets in-sync again
+* **`on('subdoc-synced', Handler:(Provider:LocalForageProvider, SubDoc:Y.Doc) => void`**<br>the `subdoc-synced` event is fired whenever any "subdoc" of this provider's main `Y.Doc` has been successfully synchronized. `Provider` contains a reference to this provider and `SubDoc` a reference to the synchronized subdoc
+
 ## Build Instructions ##
 
 You may easily build this package yourself.
