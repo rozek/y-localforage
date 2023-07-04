@@ -9,6 +9,10 @@ a simple [Yjs](https://docs.yjs.dev/) storage provider using [localForage](https
 
 
 
+### Properties ###
+
+* **`isSynced`**<br>returns `true` while the initially given `Y.Doc` and this provider are in-sync - or `false` otherwise. Please note, that `isSynced` does not inform about the synchronization status of any "subdocs"
+
 ### Events ###
 
 * **`on('sync-started', Handler:(Provider:LocalForageProvider, Progress:number) => void)`**<br>the `sync-started` event is fired whenever a synchronization between this provider and its associated `Y.Doc` has begun. `Provider` contains a reference to this provider and `Progress` is always `0.0`
