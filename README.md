@@ -12,6 +12,7 @@ a simple [Yjs](https://docs.yjs.dev/) storage provider using [localForage](https
 ### Properties ###
 
 * **`isSynced`**<br>returns `true` while the initially given `Y.Doc` and this provider are in-sync - or `false` otherwise. Please note, that `isSynced` does not inform about the synchronization status of any "subdocs"
+* **`isFullySynced`**<br>returns `true` while the initially given `Y.Doc` and all its "subdocs" are in-sync - or `false` otherwise
 
 ### Events ###
 
