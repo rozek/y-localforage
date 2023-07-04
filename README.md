@@ -4,7 +4,7 @@ a simple [Yjs](https://docs.yjs.dev/) storage provider using [localForage](https
 
 [Yjs](https://github.com/yjs/yjs) provides a complete ecosystem for (persisting and) sharing "Conflict-free replicated data types" (CRDT) among multiple clients using a variety of persistence and communication providers. [LocalForage](https://github.com/localForage/localForage) is a simple storage library for JavaScript which wraps IndexedDB, WebSQL and other storage technologies in a common, `localStorage`-like API.
 
-This module implements a simple Yjs storage provider for browser-based applications which uses an arbitrary `localForage` store for persistance - this means: **if there is a `localForage` "driver", you can use this module to instantiate a Yjs provider for it**. In addition to other database providers it
+This module implements a simple Yjs storage provider for browser-based applications which uses an arbitrary `localForage` store for persistance - this means: **if there is a `localForage` "driver" for a storage of your choice, you can use this module to immediately instantiate a Yjs provider for it**. In addition to other database providers it
 
 * contains an `isSynced` property which reflects the main document's own current synchronization status,
 * and an `isFullySynced` property which includes the synchronization state of any subdocs,
