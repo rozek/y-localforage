@@ -29,12 +29,13 @@ This module implements a simple Yjs storage provider for browser-based applicati
 You may either install the package into your build environment using [NPM](https://docs.npmjs.com/) with the command
 
 ```
-npm install y-localforage
+npm install y-localforage localforage
 ```
 
-or load the plain script file directly
+or load the plain script files directly
 
 ```html
+<script src="https://unpkg.com/localforage"></script>
 <script src="https://unpkg.com/y-localforage"></script>
 ```
 
@@ -61,9 +62,19 @@ For Svelte, it is recommended to import the package in a module context. From th
 </script>
 
 <script>
-  const sharedDoc   = new Y.Doc()
-  const Persistence = new LocalForageProvider(Store, sharedDoc)
-  ...
+  localforage.config({
+    driver: [localforage.INDEXEDDB, localforage.WEBSQL]
+  })
+
+  localforage.ready(function () {
+    const DocStore = localforage.createInstance({
+      name:'Yjs-Persistence'
+    })
+
+    const sharedDoc   = new Y.Doc()
+    const Persistence = new LocalForageProvider(DocStore, sharedDoc)
+    ...
+  })
 </script>
 ```
 
@@ -73,8 +84,19 @@ Let's assume that you already "required" or "imported" (or simply loaded) the mo
 
 ```javascript
   ...
-  const Persistence = new LocalForageProvider(Store, sharedDoc)
-  ...
+  localforage.config({
+    driver: [localforage.INDEXEDDB, localforage.WEBSQL]
+  })
+
+  localforage.ready(function () {
+    const DocStore = localforage.createInstance({
+      name:'Yjs-Persistence'
+    })
+
+    const sharedDoc   = new Y.Doc()
+    const Persistence = new LocalForageProvider(DocStore, sharedDoc)
+    ...
+  })
 ```
 
 ## API Reference ##
