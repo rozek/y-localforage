@@ -55,6 +55,11 @@ var LocalForageProvider;
         get isSynced() {
             return (this._pendingUpdates === 0);
         }
+        /**** isFullySynced - is true while this._sharedDoc and all subdocs are in-sync ****/
+        get isFullySynced() {
+            return ((this._pendingUpdates === 0) &&
+                Array.from(this._SubDocMap.values()).every((SubProvider) => SubProvider.isSynced));
+        }
         /**** SubDocIsSynced - is true while the given SubDoc is in-sync ****/
         SubDocIsSynced(SubDoc) {
             const SubDocProvider = this._SubDocMap.get(SubDoc);
