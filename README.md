@@ -9,6 +9,10 @@ a simple [Yjs](https://docs.yjs.dev/) storage provider using [localForage](https
 
 
 
+## API Reference ##
+
+The following documentation shows method signatures as used by TypeScript - if you prefer plain JavaScript, just ignore the type annotations.
+
 ### Constructor ###
 
 * **`LocalForageProvider (Store:any, sharedDoc:Y.Doc, UpdateLimit:number = 500)`**<br>creates a new instance of `LocalForageProvider` which synchronizes the given `sharedDoc` on the given localForage `Store`. `UpdateLimit` indicates how many updates should be appended to the `Store` before they will be compacted into a single one
