@@ -2,6 +2,24 @@
 
 a simple [Yjs](https://docs.yjs.dev/) storage provider using [localForage](https://localforage.github.io/localForage/) for persistence
 
+[Yjs](https://github.com/yjs/yjs) provides a complete ecosystem for (persisting and) sharing "Conflict-free replicated data types" (CRDT) among multiple clients using a variety of persistence and communication providers. [LocalForage](https://github.com/localForage/localForage) is a simple storage library for JavaScript which wraps IndexedDB, WebSQL and other storage technologies in a common, `localStorage`-like API.
+
+This module implements a simple Yjs storage provider for browser-based applications which uses an arbitrary `localForage` store for persistance - this means: **if there is a `localForage` "driver", you can use this module to instantiate a Yjs provider for it**. In addition to other database providers it
+
+* contains an `isSynced` property which reflects the main document's own current synchronization status,
+* and an `isFullySynced` property which includes the synchronization state of any subdocs,
+* emits additional events (`sync-started`, `sync-continued`, `sync-finished` and `sync-aborted`) which inform about synchronization progress for the main document,
+* and `subdoc-synced` which informs about a given subdoc being successfully synchronized,
+* sends a `load` event to the main doc and any subdoc as soon as that `Y.Doc` has been fully loaded from persistence,
+* automatically persists any subdocs as well, and
+* includes rudimentary error handling which breaks down the provider upon failure (which means that you have to re-incarnate the provider after the cause for this failure has been removed).
+
+`y-localforage` always tries to keep your data safe and not to overwrite or even delete previously written updates. Even a failure normally only means that the last update could not be written but all the previous ones are still safe.
+
+> **Important: do not use the "copy" feature for `Y.Doc`s, i.e., do not create a `Y.Doc` instance with the same GUID as another one - `Y.Doc` copies do not "synchronize" as described in the docs anyway.**
+
+**NPM users**: please consider the [Github README](https://github.com/rozek/y-localforage/blob/main/README.md) for the latest description of this package (as updating the docs would otherwise always require a new NPM package version)
+
 
 
 
