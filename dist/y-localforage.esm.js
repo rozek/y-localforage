@@ -26,6 +26,11 @@ function __awaiter(thisArg, _arguments, P, generator) {
     });
 }
 
+typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
+    var e = new Error(message);
+    return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
+};
+
 // Store Key Pattern: [<subdoc-guid>]@<timestamp>-<n>
 var LocalForageProvider;
 (function (LocalForageProvider_1) {
