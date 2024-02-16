@@ -2,7 +2,7 @@
   "name": "y-localforage",
   "version": "0.1.2",
   "description": "a simple Yjs storage provider using localForage for persistence",
-  "type": "module",
+  "type": "commonjs",
   "browser": "./dist/y-localforage.js",
   "module": "./dist/y-localforage.esm.js",
   "svelte": "./dist/y-localforage.esm.js",
