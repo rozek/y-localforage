@@ -3,7 +3,7 @@ import { Observable } from 'lib0/observable'
 
 // Store Key Pattern: [<subdoc-guid>]@<timestamp>-<n>
 
-namespace LocalForageProvider {
+//namespace LocalForageProvider {
   const GUIDPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}@/i
 
   type SubDocChanges = {
@@ -79,10 +79,6 @@ namespace LocalForageProvider {
     async destroy ():Promise<void> {
       if (this._Store == null) { return }         // provider has been destroyed
 
-      let Store = this._Store
-// @ts-ignore allow clearing of "this._Store"
-      this._Store = undefined
-
       this._sharedDoc.off('update',  this._storeUpdate)
       this._sharedDoc.off('subdocs', this._manageSubDocs)
       this._sharedDoc.off('destroy', this.destroy)
@@ -97,6 +93,10 @@ namespace LocalForageProvider {
         ? await this._StorageKeys()
         : await this._StorageSubKeysFor(this._sharedDoc)
       )
+
+      let Store = this._Store
+// @ts-ignore allow clearing of "this._Store"
+      this._Store = undefined
 
       for (let i = 0, l = KeysToDelete.length; i < l; i++) {
         await Store.removeItem(KeysToDelete[i])
@@ -385,4 +385,4 @@ namespace LocalForageProvider {
       return StoreKeys.filter((Key) => Key.startsWith(KeyPrefix))
     }
   }
-}
+//}
