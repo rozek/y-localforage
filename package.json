@@ -1,6 +1,6 @@
 {
   "name": "y-localforage",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "a simple Yjs storage provider using localForage for persistence",
   "type": "module",
   "source": "src/y-localforage.ts",
@@ -11,7 +11,7 @@
   "types": "./dist/y-localforage.d.ts",
   "exports": {
     ".": {
-    	"types": "./dist/y-localforage.d.ts",
+      "types": "./dist/y-localforage.d.ts",
       "require": "./dist/y-localforage.cjs",
       "import": "./dist/y-localforage.modern.js"
     },
