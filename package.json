@@ -1,19 +1,20 @@
 {
   "name": "y-localforage",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "a simple Yjs storage provider using localForage for persistence",
-  "type": "module",
-  "source": "src/y-localforage.ts",
-  "main": "./dist/y-localforage.cjs",
+  "source": "./src/y-localforage.ts",
+  "main":   "./dist/y-localforage.umd.js",
+  "browser":"./dist/y-localforage.umd.js",
   "module": "./dist/y-localforage.esm.js",
   "svelte": "./dist/y-localforage.esm.js",
-  "umd:main": "./dist/y-localforage.umd.js",
-  "types": "./dist/y-localforage.d.ts",
+  "types":  "./dist/y-localforage.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/y-localforage.d.ts",
-      "require": "./dist/y-localforage.cjs",
-      "import": "./dist/y-localforage.modern.js"
+      "require":"./dist/y-localforage.umd.js",
+      "browser":"./dist/y-localforage.umd.js",
+      "import": "./dist/y-localforage.esm.js",
+      "svelte": "./dist/y-localforage.esm.js",
+      "types":  "./dist/y-localforage.d.ts"
     },
     "./package.json": "./package.json"
   },
